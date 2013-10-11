@@ -107,7 +107,7 @@ for ii = 1:Nx
     Omega(1,ii) = (7.0*Psi(1,ii)-8.0*Psi(2,ii)+Psi(3,ii)) / (2.0*dyy)/d6(1,ii);
 end
 
-%% LINEARIZE THE VARIABLES
+%% VECTORIZE THE VARIABLES
 % !!!!!!!!!! COMMENT HERE !!!!!
 Omega = reshape(Omega,Nx*My,1);
 Psi = reshape(Psi,Nx*My,1);
