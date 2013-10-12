@@ -8,7 +8,7 @@ function [Omega,Psi,U,V] = BoundaryCalc(Omega,Psi,U,V,Nx,My,A,IBL,x,y,dyy,d,d6)
 jj = 1;
 for ii = 1:Nx
     Psi(jj + Nx*(ii-1)) = 0;
-    Omega(jj + Nx*(ii-1)) = (7.0*Psi(1 + Nx*(ii-1))-8.0*Psi(jj+1 + Nx*(ii-1))+Psi(jj+2 + Nx*(ii-1)))/(2.0*dyy)/d6(jj + Nx*(ii-1));
+    Omega(jj + Nx*(ii-1)) = (7.0*Psi(jj + Nx*(ii-1))-8.0*Psi(jj+1 + Nx*(ii-1))+Psi(jj+2 + Nx*(ii-1)))/(2.0*dyy)/d6(ii);
     U(jj + Nx*(ii-1)) = 0;
     V(jj + Nx*(ii-1)) = 0;
 end
