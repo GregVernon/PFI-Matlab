@@ -1,0 +1,17 @@
+function param = generateLegalParameters
+
+param = struct;
+
+param.INFORMATION = [];
+param.INFORMATION.title = [];
+
+param.GEOMETRY_DEFINITION = [];
+param.GEOMETRY_DEFINITION.nx = [];
+param.GEOMETRY_DEFINITION.ny = [];
+param.GEOMETRY_DEFINITION.xmin = [];
+param.GEOMETRY_DEFINITION.xmax = [];
+param.GEOMETRY_DEFINITION.ymin = [];
+param.GEOMETRY_DEFINITION.ymax = [];
+
+param.STEP = [];
+param
