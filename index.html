@@ -42,7 +42,22 @@
 
 <ul>
 <li>Minimal nested functions</li>
+<li>Composite functions must be clear <em>(should be "human-readable")</em>
+
+<ul>
 <li>
+<code>max(max(A))</code> is fine</li>
+<li>
+<code>max(max(cell2mat(min(bsxfun(@hypot(sin(A),A))))))</code> is not</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The code should utilize latest language features as long as other goals are met
+
+<ul>
+<li>String Arrays</li>
+<li>Implicit Expansion</li>
 </ul>
 </li>
 </ul>
