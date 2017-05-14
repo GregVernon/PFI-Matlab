@@ -4,8 +4,8 @@ close all
 close('all');
 clc
 %% Geometry Definition
-NX = 201;
-NY = 201;
+NX = 401;
+NY = 1601;
 xMin = -20;
 xMax = 20;
 yMin = 1;
@@ -64,12 +64,12 @@ IBL = ceil(.05*NY);%40;
 A = 2;
 %% Solution Control
 tol = 1e-5;
-tmax = 1;
+tmax = 10;
 dt_max = 1/(10*Re);
-method = 'iterative';
+method = 'krylov';
 
 %% Results Options
-RES.OutputData = false;
+RES.OutputData = true;
 dBuffer = 1e2;
 if RES.OutputData == true
     RES.VelProfile{1}.saveData = true;
@@ -94,7 +94,7 @@ if RES.OutputData == true
     RES.VelProfile{3}.time = zeros(1,dBuffer);
 end
 dCycle = 0;
-dtOUT = 0.01;
+dtOUT = 1e-2;
 outNext = 0;
 tNext = 0;
 
@@ -134,18 +134,26 @@ else
     disp('Assembling the Coefficient Matrix')
     Atic = tic;
     FDM = -assembleCoeffMat(NX,NY,dx,dy);
+    toc(Atic)
     if strcmpi(method,'linfactor')
         disp('LINFACTOR Method Chosen'); disp('Performing Initial Matrix Factorization');
         FAtic = tic;
         F = linfactor(FDM);
         toc(FAtic)
-    elseif strcmpi(method,'iterative')
+    elseif strcmpi(method,'krylov')
         FDM = gpuArray(FDM);
-        F = [];
+        disp('Computing Krylov Preconditioners')
+        Ptic = tic;
+%         [M1,M2] = ilu(gather(FDM),struct('type','ilutp','droptol',1e-3));
+%         M1 = gpuArray(Lp);
+%         M2 = gpuArray(Up);
+        M1 = ichol(gather(FDM),struct('michol','on'));
+        M1 = gather(M1);
+        toc(Ptic);
+        F = struct('M1',[],'M2',[]);
     else
         F = [];
     end
-    toc(Atic)
 end
 % Initialize State Variables
 [PSI] = InitializePSI(A,x,y,NX,NY);

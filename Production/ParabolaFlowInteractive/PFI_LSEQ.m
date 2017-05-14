@@ -130,7 +130,7 @@ while t < tmax % start the time integration
     
     %% PsiCalc
     
-    if strcmpi(method,'jacobi');
+    if strcmpi(method,'jacobi')
         %% Vectorized PsiCalc %%
         PsiTol = 1;
         kPsi = 0;
@@ -143,7 +143,7 @@ while t < tmax % start the time integration
             PSI(jj,ii) = PSI2;
             PsiTol = max(max(abs(PSI-PSI0)));
         end
-    elseif strcmpi(method,'direct');
+    elseif strcmpi(method,'direct')
         b = computeRHS(NX,NY,x,y,dx,dy,D2,OMEGA,PSI,A,IBL);
         X = FDM\b;
         PSI(jj,ii) = reshape(X',NY-2,NX-2);
@@ -159,7 +159,7 @@ while t < tmax % start the time integration
         X = linfactor(F,b);
         PSI(jj,ii) = reshape(X',NY-2,NX-2);
         PSI = PSI_BC(PSI,x,y,NX,NY,IBL,A);
-    elseif strcmpi(method,'inverseExplicit');
+    elseif strcmpi(method,'inverseExplicit')
         if tstep == 1
             disp('Inverse Explicit Method Chosen'); disp('Performing Initial Matrix Inversion');
             mItic = tic;
@@ -170,7 +170,7 @@ while t < tmax % start the time integration
         X = invA * b;
         PSI(jj,ii) = reshape(X,NY-2,NX-2);
         PSI = PSI_BC(PSI,x,y,NX,NY,IBL,A);
-    elseif strcmpi(method,'iterative');
+    elseif strcmpi(method,'iterative')
         if tstep == 1
             disp('Iterative Method Chosen'); disp('Computing Preconditioners');
             PAtic = tic;
