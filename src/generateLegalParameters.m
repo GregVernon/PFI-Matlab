@@ -105,7 +105,7 @@ saveState = struct('name','saveState','class','logical','isRequired',false,'defa
 
 IN_SITU.Children = [];
 IN_SITU.Variables = struct('plotFlow',plotFlow,'plotState',plotState,'saveFlow',saveFlow,'saveState',saveState);
-IN_SITR.isRequired = false;
+IN_SITU.isRequired = false;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
