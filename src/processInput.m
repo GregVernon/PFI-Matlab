@@ -1,6 +1,4 @@
 function [input,fLines] = processInput(inFile)
-%% Get list of legal parameters
-PARAM = generateLegalParameters;
 %% Read the text input file
 fLines = fileread(inFile);
 
@@ -103,12 +101,12 @@ for ii = 2:length(sType)
         if sType(ii-jj).Depth < sType(ii).Depth
             foundParent = true;
             eCount = eCount+1;
-            edgeNodes(eCount,:) = [ii ii-jj];
+            edgeNodes(eCount,:) = [ii-jj ii];
         end
     end
 end
 EdgeTable = table(edgeNodes,'VariableNames',{'EndNodes'});
 NodeTable = table(nodeName,nodeFields,nodeValues,'VariableNames',{'Name','Field','Value'});
-inGraph = graph(EdgeTable,NodeTable);
+inGraph = digraph(EdgeTable,NodeTable);
 plot(inGraph)
 end
