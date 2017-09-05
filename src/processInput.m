@@ -1,9 +1,9 @@
-function [input,fLines] = processInput(inFile)
+function [inGraph,fLines] = processInput(inFile)
 %% Read the text input file
 fLines = fileread(inFile);
 
 % Separate the file by individual lines
-fLines = strip(strsplit(fLines,'\n')');
+fLines = string(strip(strsplit(fLines,'\n')'));
 
 %% Convert each line to UPPERCASE
 % Compatibility between 2016a and 2016b
@@ -47,7 +47,7 @@ dNames = unique([sType(isDuplicate).Name]);
 for ii = 1:length(dNames)
     fDuplicates = find(strcmpi([sType.Name],dNames(ii)));
     for jj = 1:length(fDuplicates)
-        sType(fDuplicates(jj)).Name = dNames(ii) + "_" + num2str(jj);
+        sType(fDuplicates(jj)).Name = dNames(ii) + "-" + num2str(jj);
     end
 end
 
@@ -77,9 +77,9 @@ for ii = 1:length(sType)
     
     if ~isempty(SectionLines)
         for p = 1:length(SectionLines)
-            fvp = strsplit(SectionLines{p},"=");
-            sType(ii).field(p) = fvp(1);
-            sType(ii).value(p) = fvp(2);
+            fvp = string(strsplit(SectionLines{p},"="));
+            sType(ii).field(p) = strip(fvp(1));
+            sType(ii).value(p) = strip(fvp(2));
         end
     end
 end
@@ -88,8 +88,8 @@ end
 % Define NodeTable
 for ii = 1:length(sType)
     nodeName{ii,1} = char(sType(ii).Name);
-    nodeFields{ii,1} = sType(ii).field';
-    nodeValues{ii,1} = sType(ii).value';
+    FVP{ii,1}.Names = sType(ii).field';
+    FVP{ii,1}.Values = sType(ii).value';
 end
 % Define Edges
 eCount = 0;
@@ -106,7 +106,12 @@ for ii = 2:length(sType)
     end
 end
 EdgeTable = table(edgeNodes,'VariableNames',{'EndNodes'});
-NodeTable = table(nodeName,nodeFields,nodeValues,'VariableNames',{'Name','Field','Value'});
+NodeTable = table(nodeName,FVP,'VariableNames',{'Name','Parameters'});
 inGraph = digraph(EdgeTable,NodeTable);
 plot(inGraph)
+
+
+%% Verify input parameters
+inGraph = verifyInput(inGraph);
+
 end

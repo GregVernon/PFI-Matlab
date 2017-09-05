@@ -1,6 +1,6 @@
 BEGIN PFI
     BEGIN INFORMATION
-      title = "DIRECT NUMERICAL SIMULATION OF PARABOLA FLOW via LINEAR SYSTEM OF EQUATIONS"
+      title = DIRECT NUMERICAL SIMULATION OF PARABOLA FLOW via LINEAR SYSTEM OF EQUATIONS
     END INFORMATION
     
     BEGIN INITIAL_GEOMETRY_DEFINITION
@@ -17,7 +17,7 @@ BEGIN PFI
         BEGIN SOLUTION_CONTROL
             BEGIN LINEAR_SOLVE
                 relative tolerance = 1e-5
-                solver = krylov
+                solver = pcg
             END LINEAR_SOLVE
             
             BEGIN TIME_CONTROL
@@ -43,7 +43,7 @@ BEGIN PFI
         
         BEGIN RESULT
           name = SurfaceVelocity
-          description = "Velocity History Along Parabola Surface"
+          description = Velocity History Along Parabola Surface
           active step = 1
           output initial step = true
           output final step = true
@@ -56,7 +56,7 @@ BEGIN PFI
         
         BEGIN RESULT
           name = U-VelocityProfile
-          description = "U-Velocity Profile History at Parabola Center Parabola Surface"
+          description = U-Velocity Profile History at Parabola Center Parabola Surface
           active step = 1
           output initial step = true
           output final step = true
@@ -69,7 +69,7 @@ BEGIN PFI
         
         BEGIN RESULT
           name = V-VelocityProfile
-          description = "V-Velocity Profile History at Parabola Center Parabola Surface"
+          description = V-Velocity Profile History at Parabola Center Parabola Surface
           active step = 1
           output initial step = true
           output final step = true
