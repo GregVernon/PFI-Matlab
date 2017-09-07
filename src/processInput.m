@@ -79,7 +79,7 @@ for ii = 1:length(sType)
         for p = 1:length(SectionLines)
             fvp = string(strsplit(SectionLines{p},"="));
             sType(ii).field(p) = strip(fvp(1));
-            sType(ii).value(p) = strip(fvp(2));
+            sType(ii).value{p} = strip(fvp(2));
         end
     end
 end

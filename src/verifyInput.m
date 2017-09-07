@@ -37,9 +37,9 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     end
 end
 
@@ -69,21 +69,21 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'nx')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'ny')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'xmin')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'xmax')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'ymin')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'ymax')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     end
 end
 
@@ -113,9 +113,9 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     end
 end
 
@@ -145,9 +145,9 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     end
 end
 
@@ -177,19 +177,19 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'relative tolerance')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'solver')
-        assert(any(strcmpi(pParam.solver.validValues,iParam.Values(ii))))
+        assert(any(strcmpi(pParam.solver.validValues,iParam.Values{ii})))
     elseif strcmpi(iParam.Names(ii),'preconditioner')
-        assert(any(strcmpi(pParam.precond.validValues,iParam.Values(ii))))
+        assert(any(strcmpi(pParam.precond.validValues,iParam.Values{ii})))
     elseif strcmpi(iParam.Names(ii),'k-space')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'maximum iterations')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     end
 end
 
@@ -219,15 +219,15 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'step time')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'max time control')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'max time scale factor')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     end
 end
 
@@ -257,9 +257,9 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     end
 end
 
@@ -289,15 +289,15 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'function')
-        assert(any(strcmpi(pParam.precond.validValues,iParam.Values(ii))))
+        assert(any(strcmpi(pParam.precond.validValues,iParam.Values{ii})))
     elseif strcmpi(iParam.Names(ii),'value')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'scale')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     end
 end
 
@@ -327,15 +327,15 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'function')
-        assert(any(strcmpi(pParam.precond.validValues,iParam.Values(ii))))
+        assert(any(strcmpi(pParam.precond.validValues,iParam.Values{ii})))
     elseif strcmpi(iParam.Names(ii),'value')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'scale')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     end
 end
 
@@ -366,29 +366,29 @@ for idx = 1:length(iRow)
         
         inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
-            assert(isstring(iParam{idx}.Values(ii)))
+            assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
-            assert(isstring(iParam{idx}.Values(ii)))
+            assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'output filename')
-            assert(isstring(iParam{idx}.Values(ii)))
+            assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'active step')
-            assert(isstring(iParam{idx}.Values(ii)))
+            assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'output initial step')
-            assert(any(strcmpi(["true","false"],iParam{idx}.Values(ii))))
-            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+            assert(any(strcmpi(["true","false"],iParam{idx}.Values{ii})))
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values{ii} = str2num(char(iParam{idx}.Values{ii}));
         elseif strcmpi(iParam{idx}.Names(ii),'output final step')
-            assert(any(strcmpi(["true","false"],iParam{idx}.Values(ii))))
-            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+            assert(any(strcmpi(["true","false"],iParam{idx}.Values{ii})))
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values{ii} = str2num(char(iParam{idx}.Values{ii}));
         elseif strcmpi(iParam{idx}.Names(ii),'time increment')
-            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2double(iParam{idx}.Values(ii));
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values{ii} = str2double(iParam{idx}.Values{ii});
         elseif strcmpi(iParam{idx}.Names(ii),'buffer increments')
-            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2double(iParam{idx}.Values(ii));
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values{ii} = str2double(iParam{idx}.Values{ii});
         elseif strcmpi(iParam{idx}.Names(ii),'variable')
-            assert(isstring(iParam{idx}.Values(ii)))
+            assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'iX')
-            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values{ii} = str2num(char(iParam{idx}.Values{ii}));
         elseif strcmpi(iParam{idx}.Names(ii),'iY')
-            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values{ii} = str2num(char(iParam{idx}.Values{ii}));
         end
     end
 end
@@ -419,21 +419,21 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'log filename')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'time increment')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2double(iParam.Values{ii});
     elseif strcmpi(iParam.Names(ii),'initial step')
-        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
+        assert(any(strcmpi(["true","false"],iParam.Values{ii})))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2num(char(iParam.Values{ii}));
     elseif strcmpi(iParam.Names(ii),'final step')
-        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
+        assert(any(strcmpi(["true","false"],iParam.Values{ii})))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2num(char(iParam.Values{ii}));
     elseif strcmpi(iParam.Names(ii),'log data')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     end
 end
 
@@ -463,21 +463,21 @@ for ii = 1:length(iParam.Names)
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
     if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
+        assert(isstring(iParam.Values{ii}))
     elseif strcmpi(iParam.Names(ii),'plotFlow')
-        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
+        assert(any(strcmpi(["true","false"],iParam.Values{ii})))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2num(char(iParam.Values{ii}));
     elseif strcmpi(iParam.Names(ii),'plotState')
-        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
+        assert(any(strcmpi(["true","false"],iParam.Values{ii})))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2num(char(iParam.Values{ii}));
     elseif strcmpi(iParam.Names(ii),'saveFlow')
-        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
+        assert(any(strcmpi(["true","false"],iParam.Values{ii})))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2num(char(iParam.Values{ii}));
     elseif strcmpi(iParam.Names(ii),'saveState')
-        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
+        assert(any(strcmpi(["true","false"],iParam.Values{ii})))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values{ii} = str2num(char(iParam.Values{ii}));
         
     end
 end
