@@ -26,8 +26,10 @@ This repository serves a slightly different purpose than the original which was 
       * Parallel CPU
       * CPU Vectorization
       * Parallel-in-time solvers
-   * Input-file execution
-
+* Input-file execution
+   * Graph theory? (see below image of directional graph)
+   
+   ![](https://media.githubusercontent.com/media/GregVernon/PFI-Matlab/01146560cc8b123e9d41b571a196550fb835035f/src/myInput_DirectionalGraphLayout.svg)
    
 ## Code Style
 * The code should emphasize clarity over performance.
