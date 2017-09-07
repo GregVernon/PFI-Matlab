@@ -26,7 +26,9 @@ This repository serves a slightly different purpose than the original which was 
       * Parallel CPU
       * CPU Vectorization
       * Parallel-in-time solvers
+   * Input-file execution
 
+   
 ## Code Style
 * The code should emphasize clarity over performance.
    * Minimal nested functions
