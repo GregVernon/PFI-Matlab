@@ -1,0 +1,8 @@
+title: Parabola Flow Interactive - Matlab
+description: This program solves the Vorticity-Streamfunction equations for the flow of an incompressible fluid around a canonic parabola at various modified Reynolds Numbers and Circulation parameters.   This is the Matlab version of the code.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
