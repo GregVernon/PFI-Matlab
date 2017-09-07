@@ -50,7 +50,7 @@ BEGIN PFI
           output final step = true
           time increment = 0.1
           buffer increment = 100
-          variable = pU
+          output variable = pU
           iX = 1:NX
           jY = 2
         END RESULT
@@ -64,7 +64,7 @@ BEGIN PFI
           output final step = true
           time increment = 0.1
           buffer increment = 100
-          variable = pU
+          output variable = pU
           iX = ceil(NX/2)
           jY = 1:2*IBL
         END RESULT
@@ -78,7 +78,7 @@ BEGIN PFI
           output final step = true
           time increment = 0.1
           buffer increment = 100
-          variable = pV
+          output variable = pV
           iX = ceil(NX/2)
           jY = 1:2*IBL
         END RESULT

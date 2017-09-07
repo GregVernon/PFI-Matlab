@@ -99,7 +99,7 @@ outInit = struct('name','output initial step','class','logical','isRequired',fal
 outFin = struct('name','output final step','class','logical','isRequired',false,'default',true);
 tIncr = struct('name','time increment','class','double','isRequired',true);
 dBuffer = struct('name','buffer increment','class','double','isRequired',false,'default',100);
-variable = struct('name','variable','class','string','isRequired',true,'options',{{'OMEGA','PSI','pU','pV'}});
+variable = struct('name','output variable','class','string','isRequired',true,'options',{{'OMEGA','PSI','pU','pV'}});
 iX = struct('name','iX','class','double','isRequired',true);
 iY = struct('name','jY','class','double','isRequired',true);
 
