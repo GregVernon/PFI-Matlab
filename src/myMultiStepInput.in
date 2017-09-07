@@ -1,0 +1,275 @@
+BEGIN PFI
+    BEGIN INFORMATION
+      title = DIRECT NUMERICAL SIMULATION OF PARABOLA FLOW via LINEAR SYSTEM OF EQUATIONS
+    END INFORMATION
+    
+    BEGIN INITIAL_GEOMETRY_DEFINITION
+      nx = 201
+      ny = 801
+      xmin = -20
+      xmax = 20
+      ymin = 1
+      ymax = 11
+    END INITIAL_GEOMETRY_DEFINITION
+    
+    BEGIN STEP
+        title = "FLOW DEVELOPMENT"
+        BEGIN SOLUTION_CONTROL
+            BEGIN LINEAR_SOLVE
+                relative tolerance = 1e-5
+                solver = pcg
+            END LINEAR_SOLVE
+            
+            BEGIN TIME_CONTROL
+                step time = 1
+                max time control = REYNOLDS
+                max time scale = 0.1
+            END TIME_CONTROL
+        END SOLUTION_CONTROL
+        
+        BEGIN FLOW_DEFINITION
+            BEGIN REYNOLDS
+                function type = constant
+                function value = 700
+                scale factor = 1
+            END REYNOLDS
+            
+            BEGIN CIRCULATION
+                function type = constant
+                function value = 2
+                scale factor = 1
+            END CIRCULATION
+        END FLOW_DEFINITION
+        
+        BEGIN RESULT
+          title = Surface Velocity
+          description = Velocity History Along Parabola Surface
+		  output filename = SurfaceVelocity
+          active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pU
+          iX = 1:NX
+          jY = 2
+        END RESULT
+        
+        BEGIN RESULT
+          title = U-VelocityProfile
+          description = U-Velocity Profile History at Parabola Center Parabola Surface
+          output filename = SurfaceVelocity
+		  active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pU
+          iX = ceil(NX/2)
+          jY = 1:2*IBL
+        END RESULT
+        
+        BEGIN RESULT
+          title = V-VelocityProfile
+          description = V-Velocity Profile History at Parabola Center Parabola Surface
+          output filename = SurfaceVelocity
+		  active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pV
+          iX = ceil(NX/2)
+          jY = 1:2*IBL
+        END RESULT
+        
+        BEGIN LOG_INFO
+          title = PFI Simulation Log
+		  description = Log of simulation for tracking
+		  log filename = pfiSIM.log
+          time increment = 0.1
+          initial step = true
+          final step = true
+          log data = tstep, t, tElapsed
+        END LOG_INFO
+        
+        BEGIN IN_SITU
+            
+        END IN_SITU
+    
+    END STEP 
+	
+	BEGIN STEP
+        title = "FLOW DEVELOPMENT"
+        BEGIN SOLUTION_CONTROL
+            BEGIN LINEAR_SOLVE
+                relative tolerance = 1e-5
+                solver = pcg
+            END LINEAR_SOLVE
+            
+            BEGIN TIME_CONTROL
+                step time = 1
+                max time control = REYNOLDS
+                max time scale = 0.1
+            END TIME_CONTROL
+        END SOLUTION_CONTROL
+        
+        BEGIN FLOW_DEFINITION
+            BEGIN REYNOLDS
+                function type = constant
+                function value = 700
+                scale factor = 1
+            END REYNOLDS
+            
+            BEGIN CIRCULATION
+                function type = constant
+                function value = 2
+                scale factor = 1
+            END CIRCULATION
+        END FLOW_DEFINITION
+        
+        BEGIN RESULT
+          title = Surface Velocity
+          description = Velocity History Along Parabola Surface
+		  output filename = SurfaceVelocity
+          active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pU
+          iX = 1:NX
+          jY = 2
+        END RESULT
+        
+        BEGIN RESULT
+          title = U-VelocityProfile
+          description = U-Velocity Profile History at Parabola Center Parabola Surface
+          output filename = SurfaceVelocity
+		  active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pU
+          iX = ceil(NX/2)
+          jY = 1:2*IBL
+        END RESULT
+        
+        BEGIN RESULT
+          title = V-VelocityProfile
+          description = V-Velocity Profile History at Parabola Center Parabola Surface
+          output filename = SurfaceVelocity
+		  active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pV
+          iX = ceil(NX/2)
+          jY = 1:2*IBL
+        END RESULT
+        
+        BEGIN LOG_INFO
+          title = PFI Simulation Log
+		  description = Log of simulation for tracking
+		  log filename = pfiSIM.log
+          time increment = 0.1
+          initial step = true
+          final step = true
+          log data = tstep, t, tElapsed
+        END LOG_INFO
+        
+        BEGIN IN_SITU
+            
+        END IN_SITU
+    
+    END STEP 
+	
+	BEGIN STEP
+        title = "FLOW DEVELOPMENT"
+        BEGIN SOLUTION_CONTROL
+            BEGIN LINEAR_SOLVE
+                relative tolerance = 1e-5
+                solver = pcg
+            END LINEAR_SOLVE
+            
+            BEGIN TIME_CONTROL
+                step time = 1
+                max time control = REYNOLDS
+                max time scale = 0.1
+            END TIME_CONTROL
+        END SOLUTION_CONTROL
+        
+        BEGIN FLOW_DEFINITION
+            BEGIN REYNOLDS
+                function type = constant
+                function value = 700
+                scale factor = 1
+            END REYNOLDS
+            
+            BEGIN CIRCULATION
+                function type = constant
+                function value = 2
+                scale factor = 1
+            END CIRCULATION
+        END FLOW_DEFINITION
+        
+        BEGIN RESULT
+          title = Surface Velocity
+          description = Velocity History Along Parabola Surface
+		  output filename = SurfaceVelocity
+          active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pU
+          iX = 1:NX
+          jY = 2
+        END RESULT
+        
+        BEGIN RESULT
+          title = U-VelocityProfile
+          description = U-Velocity Profile History at Parabola Center Parabola Surface
+          output filename = SurfaceVelocity
+		  active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pU
+          iX = ceil(NX/2)
+          jY = 1:2*IBL
+        END RESULT
+        
+        BEGIN RESULT
+          title = V-VelocityProfile
+          description = V-Velocity Profile History at Parabola Center Parabola Surface
+          output filename = SurfaceVelocity
+		  active step = 1
+          output initial step = true
+          output final step = true
+          time increment = 0.1
+          buffer increment = 100
+          output variable = pV
+          iX = ceil(NX/2)
+          jY = 1:2*IBL
+        END RESULT
+        
+        BEGIN LOG_INFO
+          title = PFI Simulation Log
+		  description = Log of simulation for tracking
+		  log filename = pfiSIM.log
+          time increment = 0.1
+          initial step = true
+          final step = true
+          log data = tstep, t, tElapsed
+        END LOG_INFO
+        
+        BEGIN IN_SITU
+            
+        END IN_SITU
+    
+    END STEP 
+END PFI
