@@ -45,7 +45,7 @@ blockTitle = struct('name','title','class','string','isRequired',false);
 description = struct('name','description','class','string','isRequired',false);
 stepTime = struct('name','step time','class','double','isRequired',true);
 maxTime = struct('name','max time control','class','string','isRequired',false,'default','Reynolds');
-scale = struct('name','max time scale factor','class','double','isRequired',false,'default',0.01);
+scale = struct('name','max time scale','class','double','isRequired',false,'default',0.01);
 
 TIME_CONTROL.Children = [];
 TIME_CONTROL.Variables = struct('title',blockTitle,'description',description,...
@@ -63,8 +63,8 @@ SOLUTION_CONTROL.isRequired = true;
 %%
 blockTitle = struct('name','title','class','string','isRequired',false);
 description = struct('name','description','class','string','isRequired',false);
-func = struct('name','function','class','string','isRequired',true,'validValues',{'constant';},'default',{'constant'});
-value = struct('name','value','class','double','isRequired',true);
+func = struct('name','function type','class','string','isRequired',true,'validValues',{'constant';},'default',{'constant'});
+value = struct('name','function value','class','double','isRequired',true);
 scale = struct('name','scale factor','class','double','isRequired',false,'default',1);
 
 REYNOLDS.Children = [];
@@ -74,8 +74,8 @@ REYNOLDS.isRequired = true;
 %%
 blockTitle = struct('name','title','class','string','isRequired',false);
 description = struct('name','description','class','string','isRequired',false);
-func = struct('name','function','class','string','isRequired',true,'validValues',{'constant';},'default',{'constant'});
-value = struct('name','value','class','double','isRequired',true);
+func = struct('name','function type','class','string','isRequired',true,'validValues',{'constant';},'default',{'constant'});
+value = struct('name','function value','class','double','isRequired',true);
 scale = struct('name','scale factor','class','double','isRequired',false,'default',1);
 
 CIRCULATION.Children = [];
@@ -94,14 +94,14 @@ FLOW_DEFINITION.isRequired = true;
 blockTitle = struct('name','title','class','string','isRequired',false);
 description = struct('name','description','class','string','isRequired',false);
 outputName = struct('name','output filename','class','string','isRequired',true);
-activeStep = struct('name','active step','class',{'double';'string'},'isRequired',false,'default','all');
+activeStep = struct('name','active step','class',{{'double';'string'}},'isRequired',false,'default','all');
 outInit = struct('name','output initial step','class','logical','isRequired',false,'default',true);
 outFin = struct('name','output final step','class','logical','isRequired',false,'default',true);
 tIncr = struct('name','time increment','class','double','isRequired',true);
-dBuffer = struct('name','buffer increments','class','double','isRequired',false,'default',100);
-variable = struct('name','variable','class','string','isRequired',true,'options',{'OMEGA','PSI','pU','pV'});
+dBuffer = struct('name','buffer increment','class','double','isRequired',false,'default',100);
+variable = struct('name','variable','class','string','isRequired',true,'options',{{'OMEGA','PSI','pU','pV'}});
 iX = struct('name','iX','class','double','isRequired',true);
-iY = struct('name','iY','class','double','isRequired',true);
+iY = struct('name','jY','class','double','isRequired',true);
 
 RESULT.Children = [];
 RESULT.Variables = struct('title',blockTitle,'description',description,...
@@ -118,7 +118,7 @@ logName = struct('name','log filename','class','string','isRequired',false,'defa
 tIncr = struct('name','time increment','class','double','isRequired',false,'default',1e3);
 initStep = struct('name','initial step','class','logical','isRequired',false,'default',true);
 finStep = struct('name','final step','class','logical','isRequired',false,'default',true);
-logData = struct('name','log data','class','cell','isRequired',false,'default',{'Timestep';'Time';'Time Elapsed'});
+logData = struct('name','log data','class','cell','isRequired',false,'default',{{'Timestep';'Time';'Time Elapsed'}});
 
 LOG_INFO.Children = [];
 LOG_INFO.Variables = struct('title',blockTitle,'description',description,...

@@ -32,7 +32,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -64,7 +64,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -108,7 +108,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -140,7 +140,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -172,7 +172,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -214,7 +214,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -252,7 +252,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -284,7 +284,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -322,7 +322,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -343,51 +343,53 @@ end
 pRow = strcmpi(pfiGraph.Nodes{:,'Name'},'RESULT');
 pParam = pfiGraph.Nodes{pRow,'SectionProperties'}{1}.Variables;
 isRequired = pfiGraph.Nodes{pRow,'SectionProperties'}{1}.isRequired;
-isUsed = any(strcmpi(inGraph.Nodes{:,'Name'},'RESULT'));
+isUsed = any(contains(inGraph.Nodes{:,'Name'},'RESULT'));
 
 if (isRequired == true) && (isUsed == false)
     error('"RESULT" block is required');
 else
-    iRow = strcmpi(inGraph.Nodes{:,'Name'},'RESULT');
-    iParam = inGraph.Nodes{iRow,'Parameters'}{1};
+    iRow = find(contains(inGraph.Nodes{:,'Name'},'RESULT'));
+    iParam = inGraph.Nodes{iRow,'Parameters'};
 end
 
 pFieldnames = string(fieldnames(pParam));
-for ii = 1:length(iParam.Names)
-    ipMatch = false(size(pFieldnames));
-    for jj = 1:length(pFieldnames)
-        ipMatch(jj) = strcmpi(iParam.Names(ii), pParam.(pFieldnames{jj}).name);
-    end
-    
-    if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
-    end
-    
-    inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
-    if strcmpi(iParam.Names(ii),'title')
-        assert(isstring(iParam.Values(ii)))
-    elseif strcmpi(iParam.Names(ii),'description')
-        assert(isstring(iParam.Values(ii)))
-    elseif strcmpi(iParam.Names(ii),'output filename')
-        assert(isstring(iParam.Values(ii)))
-    elseif strcmpi(iParam.Names(ii),'active step')
-        assert(isstring(iParam.Values(ii)))
-    elseif strcmpi(iParam.Names(ii),'output initial step')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
-    elseif strcmpi(iParam.Names(ii),'output final step')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
-    elseif strcmpi(iParam.Names(ii),'time increment')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
-    elseif strcmpi(iParam.Names(ii),'buffer increments')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
-    elseif strcmpi(iParam.Names(ii),'variable')
-        assert(isstring(iParam.Values(ii)))
-    elseif strcmpi(iParam.Names(ii),'iX')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
-    elseif strcmpi(iParam.Names(ii),'iY')
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
+for idx = 1:length(iRow)
+    for ii = 1:length(iParam{idx}.Names)
+        ipMatch = false(size(pFieldnames));
+        for jj = 1:length(pFieldnames)
+            ipMatch(jj) = strcmpi(iParam{idx}.Names(ii), pParam.(pFieldnames{jj}).name);
+        end
+        
+        if any(ipMatch) == false
+            error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
+        end
+        
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        if strcmpi(iParam{idx}.Names(ii),'title')
+            assert(isstring(iParam{idx}.Values(ii)))
+        elseif strcmpi(iParam{idx}.Names(ii),'description')
+            assert(isstring(iParam{idx}.Values(ii)))
+        elseif strcmpi(iParam{idx}.Names(ii),'output filename')
+            assert(isstring(iParam{idx}.Values(ii)))
+        elseif strcmpi(iParam{idx}.Names(ii),'active step')
+            assert(isstring(iParam{idx}.Values(ii)))
+        elseif strcmpi(iParam{idx}.Names(ii),'output initial step')
+            assert(any(strcmpi(["true","false"],iParam{idx}.Values(ii))))
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+        elseif strcmpi(iParam{idx}.Names(ii),'output final step')
+            assert(any(strcmpi(["true","false"],iParam{idx}.Values(ii))))
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+        elseif strcmpi(iParam{idx}.Names(ii),'time increment')
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2double(iParam{idx}.Values(ii));
+        elseif strcmpi(iParam{idx}.Names(ii),'buffer increments')
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2double(iParam{idx}.Values(ii));
+        elseif strcmpi(iParam{idx}.Names(ii),'variable')
+            assert(isstring(iParam{idx}.Values(ii)))
+        elseif strcmpi(iParam{idx}.Names(ii),'iX')
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+        elseif strcmpi(iParam{idx}.Names(ii),'iY')
+            inGraph.Nodes{iRow(idx),'Parameters'}{1}.Values(ii) = str2num(char(iParam{idx}.Values(ii)));
+        end
     end
 end
 
@@ -412,7 +414,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -425,11 +427,11 @@ for ii = 1:length(iParam.Names)
     elseif strcmpi(iParam.Names(ii),'time increment')
         inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2double(iParam.Values(ii));
     elseif strcmpi(iParam.Names(ii),'initial step')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
+        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
     elseif strcmpi(iParam.Names(ii),'final step')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
+        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
     elseif strcmpi(iParam.Names(ii),'log data')
         assert(isstring(iParam.Values(ii)))
     end
@@ -456,7 +458,7 @@ for ii = 1:length(iParam.Names)
     end
     
     if any(ipMatch) == false
-        error(['"' iParam.Names(ii) '" not a valid command'])
+        error(['"' char(iParam.Names(ii)) '" not a valid command'])
     end
     
     inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
@@ -465,17 +467,17 @@ for ii = 1:length(iParam.Names)
     elseif strcmpi(iParam.Names(ii),'description')
         assert(isstring(iParam.Values(ii)))
     elseif strcmpi(iParam.Names(ii),'plotFlow')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
+        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
     elseif strcmpi(iParam.Names(ii),'plotState')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
+        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
     elseif strcmpi(iParam.Names(ii),'saveFlow')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
+        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
     elseif strcmpi(iParam.Names(ii),'saveState')
-        assert(any(strcmpi({"true","false"},iParam.Values(ii))))
-        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(iParam.Values(ii));
+        assert(any(strcmpi(["true","false"],iParam.Values(ii))))
+        inGraph.Nodes{iRow,'Parameters'}{1}.Values(ii) = str2num(char(iParam.Values(ii)));
         
     end
 end

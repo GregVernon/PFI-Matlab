@@ -42,46 +42,51 @@ BEGIN PFI
         END FLOW_DEFINITION
         
         BEGIN RESULT
-          name = SurfaceVelocity
+          title = Surface Velocity
           description = Velocity History Along Parabola Surface
+		  output filename = SurfaceVelocity
           active step = 1
           output initial step = true
           output final step = true
           time increment = 0.1
-          buffer iterations = 100
+          buffer increment = 100
           variable = pU
           iX = 1:NX
           jY = 2
         END RESULT
         
         BEGIN RESULT
-          name = U-VelocityProfile
+          title = U-VelocityProfile
           description = U-Velocity Profile History at Parabola Center Parabola Surface
-          active step = 1
+          output filename = SurfaceVelocity
+		  active step = 1
           output initial step = true
           output final step = true
           time increment = 0.1
-          buffer iterations = 100
+          buffer increment = 100
           variable = pU
           iX = ceil(NX/2)
           jY = 1:2*IBL
         END RESULT
         
         BEGIN RESULT
-          name = V-VelocityProfile
+          title = V-VelocityProfile
           description = V-Velocity Profile History at Parabola Center Parabola Surface
-          active step = 1
+          output filename = SurfaceVelocity
+		  active step = 1
           output initial step = true
           output final step = true
           time increment = 0.1
-          buffer iterations = 100
+          buffer increment = 100
           variable = pV
           iX = ceil(NX/2)
           jY = 1:2*IBL
         END RESULT
         
         BEGIN LOG_INFO
-          name = pfiSIM.log
+          title = PFI Simulation Log
+		  description = Log of simulation for tracking
+		  log filename = pfiSIM.log
           time increment = 0.1
           initial step = true
           final step = true
