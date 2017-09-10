@@ -1,15 +1,13 @@
-%%
-clear
-close all
-close('all');
-clc
+function PFI(inputFile)
+[inGraph, inStruct, fLines] = processInput(inputFile);
+
 %% Geometry Definition
-NX = 401;
-NY = 1601;
-xMin = -20;
-xMax = 20;
-yMin = 1;
-yMax = 11;
+NX = inStruct.INITIAL_GEOMETRY_DEFINITION{1}.nx;
+NY = inStruct.INITIAL_GEOMETRY_DEFINITION{1}.ny;
+xMin = inStruct.INITIAL_GEOMETRY_DEFINITION{1}.xmin;
+xMax = inStruct.INITIAL_GEOMETRY_DEFINITION{1}.xmax;
+yMin = inStruct.INITIAL_GEOMETRY_DEFINITION{1}.ymin;
+yMax = inStruct.INITIAL_GEOMETRY_DEFINITION{1}.ymax;
 % Define Parabolic Coordinates
 x = linspace(xMin,xMax,NX);
 y = linspace(yMin,yMax,NY);
