@@ -1,4 +1,4 @@
-function [inGraph,fLines] = processInput(inFile)
+function [inGraph, inStruct, fLines] = processInput(inFile)
 %% Read the text input file
 fLines = fileread(inFile);
 
@@ -113,5 +113,20 @@ plot(inGraph)
 
 %% Verify input parameters
 inGraph = verifyInput(inGraph);
+
+%% Graph to Structure
+cBlock = cell(length(inGraph.Nodes.Name),1);
+for n = 1:length(inGraph.Nodes.Name)
+    cBlock{n} = strsplit(inGraph.Nodes.Name{n},'-');
+    cBlock{n} = cBlock{n}{1};
+    nBlock = sum(strcmpi(cBlock,cBlock{n}));
+    cParamNames = inGraph.Nodes.Parameters{n}.Names;
+    cParamFields = inGraph.Nodes.Parameters{n}.Fields;
+    cParamValues = inGraph.Nodes.Parameters{n}.Values;
+    
+    for fv = 1:length(cParamNames)
+        inStruct.(cBlock{n}){nBlock}.(cParamFields{fv}) = cParamValues{fv};
+    end
+end
 
 end

@@ -9,6 +9,10 @@ isUsed = any(strcmpi(inGraph.Nodes{:,'Name'},'PFI'));
 
 if (isUsed == false)
     error('"PFI" block is required');
+else
+    iRow = strcmpi(inGraph.Nodes{:,'Name'},'PFI');
+    iParam = inGraph.Nodes{iRow,'Parameters'}{1};
+    inGraph.Nodes{iRow,'Parameters'}{1}.Fields = "";
 end
 
 %% Verify INFORMATION Block
@@ -102,6 +106,7 @@ end
 
 pFieldnames = string(fieldnames(pParam));
 for idx = 1:length(iRow)
+    inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields = "";
     for ii = 1:length(iParam{idx}.Names)
         ipMatch = false(size(pFieldnames));
         for jj = 1:length(pFieldnames)
@@ -112,7 +117,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -135,6 +140,7 @@ end
 
 pFieldnames = string(fieldnames(pParam));
 for idx = 1:length(iRow)
+    inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields = "";
     for ii = 1:length(iParam{idx}.Names)
         ipMatch = false(size(pFieldnames));
         for jj = 1:length(pFieldnames)
@@ -145,7 +151,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -179,7 +185,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -223,7 +229,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -253,6 +259,7 @@ end
 
 pFieldnames = string(fieldnames(pParam));
 for idx = 1:length(iRow)
+    inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields = "";
     for ii = 1:length(iParam{idx}.Names)
         ipMatch = false(size(pFieldnames));
         for jj = 1:length(pFieldnames)
@@ -263,7 +270,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -297,7 +304,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -337,7 +344,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -431,7 +438,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')
@@ -467,6 +474,7 @@ end
 
 pFieldnames = string(fieldnames(pParam));
 for idx = 1:length(iRow)
+    inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields = "";
     for ii = 1:length(iParam{idx}.Names)
         ipMatch = false(size(pFieldnames));
         for jj = 1:length(pFieldnames)
@@ -477,7 +485,7 @@ for idx = 1:length(iRow)
             error(['"' char(iParam{idx}.Names(ii)) '" not a valid command'])
         end
         
-        inGraph.Nodes{iRow,'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
+        inGraph.Nodes{iRow(idx),'Parameters'}{1}.Fields(ii,1) = string(pFieldnames{ipMatch});
         if strcmpi(iParam{idx}.Names(ii),'title')
             assert(isstring(iParam{idx}.Values{ii}))
         elseif strcmpi(iParam{idx}.Names(ii),'description')

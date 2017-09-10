@@ -13,7 +13,7 @@ BEGIN PFI
     END INITIAL_GEOMETRY_DEFINITION
     
     BEGIN STEP
-        title = "FLOW DEVELOPMENT"
+        title = FLOW DEVELOPMENT
         BEGIN SOLUTION_CONTROL
             BEGIN LINEAR_SOLVE
                 relative tolerance = 1e-5
@@ -100,7 +100,7 @@ BEGIN PFI
     END STEP 
 	
 	BEGIN STEP
-        title = "FLOW DEVELOPMENT"
+        title = Vortex shedding
         BEGIN SOLUTION_CONTROL
             BEGIN LINEAR_SOLVE
                 relative tolerance = 1e-5
@@ -187,7 +187,7 @@ BEGIN PFI
     END STEP 
 	
 	BEGIN STEP
-        title = "FLOW DEVELOPMENT"
+        title = Active flow control
         BEGIN SOLUTION_CONTROL
             BEGIN LINEAR_SOLVE
                 relative tolerance = 1e-5
